@@ -1,0 +1,41 @@
+﻿@page
+@model RazorPage.WebUI.Pages.Goods.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#Create").attr("class", "show");
+        $("#Edit").attr("class", "hidden");
+        var id = $("#InputGoods_Id").val();
+        if (id != "0") {
+            $("#Edit").attr("class", "show");
+            $("#Create").attr("class", "hidden");
+        }
+    });
+</script>
+
+
+<h2>Create</h2>
+<form method="post">
+    <div class="text-danger" asp-validation-summary="All"></div>
+    <div class="form-group">
+        <input type="hidden" asp-for="InputGoods.Id" />
+    </div>
+    <div class="form-group">
+        <label asp-for="InputGoods.Name"></label>
+        <input class="form-control" asp-for="InputGoods.Name" />
+        <span class="text-danger" asp-validation-for="InputGoods.Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="InputGoods.Price"></label>
+        <input class="form-control" asp-for="InputGoods.Price" />
+        <span class="text-danger" asp-validation-for="InputGoods.Price"></span>
+    </div>
+    <div class="form-group">
+        <button id="Create" type="submit" >Add</button>
+        <button id="Edit" type="submit" asp-page-handler="Edit" class="hidden">Edit</button>
+    </div>
+</form>
+

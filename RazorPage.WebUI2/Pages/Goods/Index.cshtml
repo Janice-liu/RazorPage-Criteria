@@ -1,0 +1,48 @@
+﻿@page
+@model RazorPage.WebUI.Pages.Goods.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+<script type="text/javascript">
+    $(function() {
+        $("#Delete").click(deletegoods());
+    });
+
+    function deletegoods() {
+        var result = confirm("是否确认删除？");
+        if (!result) return;
+
+    }
+</script>
+
+<h2>Goods</h2>
+<a asp-page="/Goods/Create" class="btn-info">Create</a>
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Operate</th>
+            </tr>
+        </thead>
+        <tbody>
+        @if (Model.Goodses != null)
+        {
+            foreach (var good in Model.Goodses)
+            {
+                <tr>
+                    <td>@good.Id</td>
+                    <td>@good.Name</td>
+                    <td>@good.Price</td>
+                    <td><a asp-page="/Goods/Create" asp-route-id="@good.Id">Edit</a> |
+                        <a id="Delete" href="#">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+</form>
+

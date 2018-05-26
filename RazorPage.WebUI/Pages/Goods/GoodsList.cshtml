@@ -1,0 +1,33 @@
+﻿@page
+@model RazorPage.WebUI.Pages.Goods.GoodsListModel
+@{
+    ViewData["Title"] = "GoodsList";
+}
+
+<h2>GoodsList</h2>
+<br/>
+<p><a asp-page="/Goods/Create">Create</a></p>
+<br/>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#ID</th>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (Model.Goodses != null)
+    {
+        foreach (var goods in Model.Goodses)
+        {
+        <tr>
+            <td>@goods.GoodsName</td>
+            <td>@goods.GoondsPrice</td>
+        </tr>
+        }
+    }
+    </tbody>
+</table>
+
