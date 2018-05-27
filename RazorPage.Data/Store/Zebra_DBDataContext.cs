@@ -64,9 +64,10 @@ namespace RazorPage.Data.Store
         }
 
         [global::System.Data.Linq.Mapping.FunctionAttribute(Name = "dbo.JaniceGoods$Operate")]
-        public void JaniceGoods_Operate([global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "NVarChar(MAX)")] string data)
+        public int JaniceGoods_Operate([global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "NVarChar(MAX)")] string data)
         {
-            this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), data);
+            IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), data);
+            return ((int)(result.ReturnValue));
         }
     }
 
@@ -78,6 +79,8 @@ namespace RazorPage.Data.Store
         private string _GoodsName;
 
         private decimal _GoodsPrice;
+
+        private DateTime _CreateDate;
 
         public JaniceGoods_RawResult()
         {
@@ -127,6 +130,22 @@ namespace RazorPage.Data.Store
                 if ((this._GoodsPrice != value))
                 {
                     this._GoodsPrice = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_CreateDate", DbType = "SmallDateTime")]
+        public DateTime CreateDate
+        {
+            get
+            {
+                return this._CreateDate;
+            }
+            set
+            {
+                if ((this._CreateDate != value))
+                {
+                    this._CreateDate = value;
                 }
             }
         }

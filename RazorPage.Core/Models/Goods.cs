@@ -13,10 +13,12 @@ namespace RazorPage.Core.Models
     public partial class Goods : Entity<M, string>
     {
         #region { Holder }
-
+        
         public S GoodsName { get; set; }
         
-        public decimal GoondsPrice { get; set; }
+        public decimal GoodsPrice { get; set; }
+
+        public DateTime CreateDate { get; set; }
 
         #endregion
 
@@ -24,10 +26,21 @@ namespace RazorPage.Core.Models
 
         public class Criteria : EntityCriteria<iM, string>
         {
+            public S Id { get;}
             public S GoodsName { get; }
+
+            public S OrderByName { get; }
+
+            public Criteria(string id,string goodsName,string orderByName)
+            {
+                ID = id;
+                GoodsName = goodsName;
+                OrderByName = orderByName;
+            }
 
             protected override void OnCollect(ICriteriaPool<iM> pool)
             {
+                pool.Add(x => x.ID==Id, Id.IsTruthy());
                 pool.Add(x => x.GoodsName.Contains(GoodsName), GoodsName.IsTruthy());
             }
         }
@@ -44,8 +57,10 @@ namespace RazorPage.Core.Models
 
             public decimal GoondsPrice { get; set; }
 
+            public S Operate { get; set; }
+
             public S ToTvp()
-                => at.Tvp.Field.Join(Id, GoodsName, GoondsPrice);
+                => at.Tvp.Field.Join(Id, GoodsName, GoondsPrice, Operate);
 
         }
 

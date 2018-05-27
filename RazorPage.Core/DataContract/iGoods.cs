@@ -9,5 +9,7 @@ namespace RazorPage.Core.DataContract
         string GoodsName { get; }
 
         decimal GoodsPrice { get; }
+
+        DateTime CreateDate { get; set; }
     }
 }

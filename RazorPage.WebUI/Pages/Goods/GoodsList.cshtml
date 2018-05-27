@@ -8,26 +8,43 @@
 <br/>
 <p><a asp-page="/Goods/Create">Create</a></p>
 <br/>
+<form method="post">
+    <div class="form-group">
+        <input class="col-md-5" placeholder="Name" name="SearchValue"/>
+        <button type="submit" asp-page-handler="Search" >查询</button>
+    </div>
+</form>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>#ID</th>
-            <th>Name</th>
-            <th>Price</th>
-        </tr>
-    </thead>
-    <tbody>
-    @if (Model.Goodses != null)
-    {
-        foreach (var goods in Model.Goodses)
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>CreateDate</th>
+                <th>Operate</th>
+            </tr>
+        </thead>
+        <tbody>
+        @if (Model.Goodses != null)
         {
-        <tr>
-            <td>@goods.GoodsName</td>
-            <td>@goods.GoondsPrice</td>
-        </tr>
+            foreach (var goods in Model.Goodses)
+            {
+            <tr>
+                <td>@goods.ID</td>
+                <td>@goods.GoodsName</td>
+                <td>@goods.GoodsPrice</td>
+                <td>@goods.CreateDate</td>
+                <td>
+                    <a asp-page="/Goods/Create" asp-route-Id="@goods.ID">Edit</a> |
+                    <input asp-route-id="@goods.ID" asp-page-handler="Delete" type="submit" value="Delete">
+                </td>
+            </tr>
+            }
         }
-    }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</form>
+
 

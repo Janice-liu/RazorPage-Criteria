@@ -8,6 +8,6 @@ namespace RazorPage.Core.Repos
     {
         IReadOnlyList<M> Get(M.Criteria criteria);
 
-        void Add(M.CreationSpec spec);
+        string Operate(M.CreationSpec spec);
     }
 }

@@ -62,16 +62,17 @@ namespace RazorPage.Data2
 			OnCreated();
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.JaniceGoods$Operate")]
+		public int JaniceGoods_Operate([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string data)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), data);
+			return ((int)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.JaniceGoods$Raw", IsComposable=true)]
 		public IQueryable<JaniceGoods_RawResult> JaniceGoods_Raw()
 		{
 			return this.CreateMethodCallQuery<JaniceGoods_RawResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.JaniceGoods$Operate")]
-		public void JaniceGoods_Operate([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string data)
-		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), data);
 		}
 	}
 	
@@ -83,6 +84,8 @@ namespace RazorPage.Data2
 		private string _GoodsName;
 		
 		private decimal _GoodsPrice;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
 		
 		public JaniceGoods_RawResult()
 		{
@@ -132,6 +135,22 @@ namespace RazorPage.Data2
 				if ((this._GoodsPrice != value))
 				{
 					this._GoodsPrice = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="SmallDateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this._CreateDate = value;
 				}
 			}
 		}

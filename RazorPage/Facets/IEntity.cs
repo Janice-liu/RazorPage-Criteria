@@ -7,13 +7,14 @@ using Zebra;
 namespace RazorPage
 {
 	public interface IIdentityGetter<PK> where PK : IEquatable<PK> { PK ID { get; } }
-	public interface IIdentitySetter<PK> where PK : IEquatable<PK> { PK ID { set; } }
+	//public interface IIdentitySetter<PK> where PK : IEquatable<PK> { PK ID { set; } }
 
 
 	public interface IEntity : IEntity<long> { }
-	public interface IEntity<PK> : IIdentityGetter<PK>, IIdentitySetter<PK> where PK : IEquatable<PK> { }
+	//public interface IEntity<PK> : IIdentityGetter<PK>, IIdentitySetter<PK> where PK : IEquatable<PK> { }
+    public interface IEntity<PK> : IIdentityGetter<PK> where PK : IEquatable<PK> { }
 
-	partial class extRazorPage
+    partial class extRazorPage
 	{
 		public static T Fetch<T>(this IQueryable<T> me, Expression<Func<T, bool>> predicate)
 			=> me.Ensure(q => Queryable.FirstOrDefault(q, predicate));

@@ -8,7 +8,7 @@ namespace RazorPage.WebUI.Models
 {
     public class Goods
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [Required]
         [Display(Name = "名称")]
@@ -19,5 +19,7 @@ namespace RazorPage.WebUI.Models
         //[DataType(DataType.Custom)]
         [Display(Name = "价格")]
         public decimal Price { get; set; }
+
+        public DateTime CreateDate { get; set; }
     }
 }

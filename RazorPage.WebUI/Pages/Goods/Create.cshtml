@@ -4,20 +4,43 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#Create").attr("class", "");
+        $("#Edit").attr("class", "hidden");
+        var id = $("#Goods_Id").val();
+        if (id != undefined && id !="") {
+            @{
+                ViewData["Title"] = "Edit";
+            }
+            $("#TitleId").text("Edit");
+            $("#Edit").attr("class", "");
+            $("#Create").attr("class", "hidden");
+        }
+    });
+</script>
+
+<h2 id="TitleId">Create</h2>
 <form method="post">
     <div class="text-danger" asp-validation-summary="All"></div>
     <div class="form-group">
+        <input asp-for="Goods.Id" class="form-control" type="hidden" />
+    </div>
+    <div class="form-group">
         <label asp-for="Goods.Name"></label>
-        <input asp-for="Goods.Name" class="form-control"/>
+        <input asp-for="Goods.Name" class="form-control" />
         <span asp-validation-for="Goods.Name"></span>
     </div>
     <div class="form-group">
         <label asp-for="Goods.Price"></label>
-        <input asp-for="Goods.Price" class="form-control"/>
+        <input asp-for="Goods.Price" class="form-control" />
         <span asp-validation-for="Goods.Price"></span>
     </div>
     <div class="form-group">
-        <button type="submit">Add</button>
+        <button id="Create" type="submit">Add</button>
+        <button id="Edit" type="submit" asp-page-handler="Edit" class="hidden">Edit</button>
+        <button type="submit" asp-page-handler="Cancel">Cancel</button>
+        @*|
+        <a asp-page="/Goods/GoodsList">ToGoodsList</a>*@
     </div>
 </form>

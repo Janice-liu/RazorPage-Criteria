@@ -1,9 +1,10 @@
-﻿using RazorPage.Core.Models;
+﻿using System.Collections.Generic;
+using RazorPage.Core.Models;
 using RazorPage.Core.Repos;
 using RazorPage.Data.Store;
-using System.Collections.Generic;
+using Zebra;
 
-namespace RazorPage.Data.Repos
+namespace RazorPage.Repos
 {
     using M = Goods;
     public class GoodsRepo : TvpRepoBase<Zebra_DBDataContext>, IGoodsRepo
@@ -13,9 +14,9 @@ namespace RazorPage.Data.Repos
         }
 
         public IReadOnlyList<M> Get(M.Criteria criteria)
-        => OnFunction(x=>criteria.ApplyTo(x.JaniceGoods_Raw).MapToReadOnlyList<M>());
+        => OnFunction(x=>criteria.ApplyTo(x.JaniceGoods_Raw).OrderBy(criteria.OrderByName).MapToReadOnlyList<M>());
 
-        public void Add(M.CreationSpec spec)
-        =>Actions(m=>m.)
+        public string Operate(M.CreationSpec spec)
+            => OnAction(x => x.JaniceGoods_Operate(spec.ToTvp()));
     }
 }

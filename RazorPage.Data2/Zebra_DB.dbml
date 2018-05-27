@@ -1,13 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Zebra_DB" Class="Zebra_DBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.50.254;Initial Catalog=Zebra_DB;Persist Security Info=True;User ID=it_user" SettingsObjectName="RazorPage.Data2.Properties.Settings" SettingsPropertyName="Zebra_DBConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.JaniceGoods$Operate" Method="JaniceGoods_Operate">
+    <Parameter Name="data" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
   <Function Name="dbo.JaniceGoods$Raw" Method="JaniceGoods_Raw" IsComposable="true">
     <ElementType Name="JaniceGoods_RawResult">
       <Column Name="ID" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
       <Column Name="GoodsName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="GoodsPrice" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
     </ElementType>
-  </Function>
-  <Function Name="dbo.JaniceGoods$Operate" Method="JaniceGoods_Operate">
-    <Parameter Name="data" Type="System.String" DbType="NVarChar(MAX)" />
   </Function>
 </Database>
