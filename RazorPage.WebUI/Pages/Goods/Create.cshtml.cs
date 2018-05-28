@@ -26,7 +26,7 @@ namespace RazorPage.WebUI.Pages.Goods
             Goods=new Models.Goods();
             if (!string.IsNullOrEmpty(id))
             {
-                var criteria = new Core.Models.Goods.Criteria(id,string.Empty,"CreateDate");
+                var criteria = new Core.Models.Goods.Criteria(id,string.Empty);
                 var goodses = _goodsRepo.Get(criteria).ToList();
                 Goods = new Models.Goods
                 {

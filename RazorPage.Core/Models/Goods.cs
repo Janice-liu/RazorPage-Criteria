@@ -31,7 +31,7 @@ namespace RazorPage.Core.Models
 
             public S OrderByName { get; }
 
-            public Criteria(string id,string goodsName,string orderByName)
+            public Criteria(string id,string goodsName,string orderByName= "CreateDate")
             {
                 ID = id;
                 GoodsName = goodsName;

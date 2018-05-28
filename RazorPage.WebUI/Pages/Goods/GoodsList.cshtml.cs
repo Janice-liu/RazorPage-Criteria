@@ -20,19 +20,19 @@ namespace RazorPage.WebUI.Pages.Goods
 
         public void OnGet()
         {
-            var criteria =new M.Criteria(string.Empty, string.Empty, "CreateDate");
+            var criteria =new M.Criteria(string.Empty, string.Empty);
             Goodses = _goodsRepo.Get(criteria).ToList();
         }
 
         public void OnPostSearch(string searchValue)
         {
-            var criteria = new Core.Models.Goods.Criteria(string.Empty, searchValue, "CreateDate");
+            var criteria = new M.Criteria(string.Empty, searchValue);
             Goodses = _goodsRepo.Get(criteria).ToList();
         }
 
         public IActionResult OnPostDelete(string id)
         {
-            var criteria= new M.Criteria(id,string.Empty, "CreateDate");
+            var criteria= new M.Criteria(id,string.Empty);
             var goodses = _goodsRepo.Get(criteria);
             if (goodses == null || goodses.Count == 0)
             {

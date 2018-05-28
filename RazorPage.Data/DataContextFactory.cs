@@ -9,13 +9,13 @@ namespace RazorPage.Data
 
     public class Connection : IConnection
     {
-        public static string connection = "";
+        public static string _connection = "";
 
-        public Connection(string aa)
+        public Connection(string connection)
         {
-            connection = aa;
+            _connection = connection;
         }
-        public string GetString() => connection;
+        public string GetString() => _connection;
     }
 
     public sealed class DataContextFactory: IDataContextFactory<Zebra_DBDataContext>
