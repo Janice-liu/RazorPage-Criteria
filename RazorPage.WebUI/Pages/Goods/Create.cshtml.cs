@@ -27,12 +27,12 @@ namespace RazorPage.WebUI.Pages.Goods
             if (!string.IsNullOrEmpty(id))
             {
                 var criteria = new Core.Models.Goods.Criteria(id,string.Empty);
-                var goodses = _goodsRepo.Get(criteria).ToList();
+                var goods = _goodsRepo.Get(criteria).FirstOrDefault();
                 Goods = new Models.Goods
                 {
-                    Id = goodses[0]?.ID,
-                    Name = goodses[0]?.GoodsName,
-                    Price = goodses[0]?.GoodsPrice ?? 0
+                    Id = goods?.ID,
+                    Name = goods?.GoodsName,
+                    Price = goods?.GoodsPrice ?? 0
                 };
             }
             return Page();
