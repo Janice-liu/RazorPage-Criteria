@@ -40,7 +40,7 @@ namespace RazorPage.Core.Models
 
             protected override void OnCollect(ICriteriaPool<iM> pool)
             {
-                pool.Add(x => x.ID==Id, Id.IsTruthy());
+                pool.Add(x =>((IIdentityGetter<S>)x).ID==Id, Id.IsTruthy());
                 pool.Add(x => x.GoodsName.Contains(GoodsName), GoodsName.IsTruthy());
             }
         }
