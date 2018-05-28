@@ -3,15 +3,25 @@
 @{
     ViewData["Title"] = "GoodsList";
 }
+<script type="text/javascript">
+    function goodsdelete() {
+        var msg = "您真的确定要删除吗？\n\n请确认！";
+        if (confirm(msg) === true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
 
 <h2>GoodsList</h2>
-<br/>
+<br />
 <p><a asp-page="/Goods/Create">Create</a></p>
-<br/>
+<br />
 <form method="post">
     <div class="form-group">
-        <input class="col-md-5" placeholder="Name" name="SearchValue"/>
-        <button type="submit" asp-page-handler="Search" >查询</button>
+        <input class="col-md-5" placeholder="Name" name="SearchValue" />
+        <button type="submit" asp-page-handler="Search">查询</button>
     </div>
 </form>
 
@@ -27,22 +37,22 @@
             </tr>
         </thead>
         <tbody>
-        @if (Model.Goodses != null)
-        {
-            foreach (var goods in Model.Goodses)
+            @if (Model.Goodses != null)
             {
-            <tr>
-                <td>@goods.ID</td>
-                <td>@goods.GoodsName</td>
-                <td>@goods.GoodsPrice</td>
-                <td>@goods.CreateDate</td>
-                <td>
-                    <a asp-page="/Goods/Create" asp-route-Id="@goods.ID">Edit</a> |
-                    <input asp-route-id="@goods.ID" asp-page-handler="Delete" type="submit" value="Delete">
-                </td>
-            </tr>
+                foreach (var goods in Model.Goodses)
+                {
+                    <tr>
+                        <td>@goods.ID</td>
+                        <td>@goods.GoodsName</td>
+                        <td>@goods.GoodsPrice</td>
+                        <td>@goods.CreateDate</td>
+                        <td>
+                            <a asp-page="/Goods/Create" asp-route-Id="@goods.ID">Edit</a> |
+                            <button asp-route-id="@goods.ID" asp-page-handler="Delete" type="submit" value="Delete" onclick="return goodsdelete()">Delete</button>
+                        </td>
+                    </tr>
+                }
             }
-        }
         </tbody>
     </table>
 </form>
