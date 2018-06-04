@@ -10,7 +10,7 @@ namespace RazorPage.Core.Models
     using iM = iGoods;
     using M = Goods;
     using S=String;
-    public partial class Goods : Entity<M, string>
+    public partial class Goods : Entity<M, S>
     {
         #region { Holder }
         
@@ -24,7 +24,7 @@ namespace RazorPage.Core.Models
 
         #region { Criteria }
 
-        public class Criteria : EntityCriteria<iM, string>
+        public class Criteria : EntityCriteria<iM, S>
         {
             public S Id { get;}
             public S GoodsName { get; }
