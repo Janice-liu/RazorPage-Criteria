@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RazorPage.Core.DataContract
 {
@@ -10,6 +8,6 @@ namespace RazorPage.Core.DataContract
 
         decimal GoodsPrice { get; }
 
-        DateTime CreateDate { get; set; }
+        DateTime CreateDate { get; }
     }
 }
